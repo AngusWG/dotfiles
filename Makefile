@@ -13,7 +13,7 @@ format:
 # 更新：同步远程代码和子模块
 update:
 	git fetch --all
-	git reset --hard origin/develop
+	git reset --hard origin/main
 	bash ./install
 
 u: update
