@@ -1,0 +1,24 @@
+- defaults:
+    link:
+      relink: true    # 如果目标链接已存在但指向错误，自动修复
+      create: true    # 如果目标父目录不存在，自动创建（比如 ~/.config/）
+      force: true    # 保护非链接的普通文件，不强制覆盖
+
+- clean: ['~']        # 清理家目录下失效的 dotfiles 软链接
+
+- shell:
+  - [git submodule update --init --recursive, 正在同步插件子模块]
+  # 这里的路径要注意：确保你确实创建了 scripts 文件夹及 setup_env.sh 脚本
+  - command: bash scripts/setup_env.sh
+    description: "安装系统工具、Oh My Zsh 及插件..."
+    stdout: true
+    stderr: true
+
+- link:
+    # 目的地 : 仓库源路径
+    ~/.zshrc: files/zshrc
+    ~/.tmux.conf: files/tmux.conf
+    ~/.vimrc: files/vimrc
+    ~/.bashrc: files/bashrc
+    ~/.aliases: files/aliases
+    ~/.oh-my-zsh/themes/river.zsh-theme: files/river.zsh-theme
