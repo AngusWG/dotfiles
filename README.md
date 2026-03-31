@@ -1,5 +1,9 @@
 # DOTFILES
 
+- ! 自用项目
+
+## 使用说明
+
 ---
 
 以下是 Dotbot 的**三大核心用法**，按从易到难排序：
@@ -19,8 +23,8 @@
     ~/.config/nvim: nvim        # 甚至可以映射整个文件夹
 ```
 
-* **原理**：它相当于自动执行了 `ln -s ~/dotfiles/zshrc ~/.zshrc`。
-* **优势**：你在仓库里改了文件，系统配置**实时生效**，不需要重新运行脚本。
+- **原理**：它相当于自动执行了 `ln -s ~/dotfiles/zshrc ~/.zshrc`。
+- **优势**：你在仓库里改了文件，系统配置**实时生效**，不需要重新运行脚本。
 
 ---
 
@@ -39,7 +43,7 @@
     stderr: true
 ```
 
-* **注意**：`shell` 模块非常适合运行你之前写好的那个包含 `apt install` 和 `crontab` 的脚本。
+- **注意**：`shell` 模块非常适合运行你之前写好的那个包含 `apt install` 和 `crontab` 的脚本。
 
 ---
 
@@ -59,20 +63,19 @@
 
 当你以后去了一台**新电脑**，或者重装了系统，你只需要：
 
-
 ```bash
-git clone --recursive https://github.com/你的用户名/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-bash ./install 
+git clone --recursive https://github.com/AngusWG/dotfiles.git ~/dotfiles && cd ~/dotfiles && make i
 ```
+
+- ! 会删除原有配置，根据 install.conf.yaml 手动备份 !
 
 ---
 
 ### 💡 给你的进阶小贴士
 
-* **路径问题**：在 YAML 里，左边是**目的地**（通常带 `~/`），右边是**源文件**（相对于 `install.conf.yaml` 的路径）。
-* **参数配置**：建议在 `defaults` 里开启 `relink: true`。这样如果你手动改了软链接，Dotbot 每次运行都会把它纠正回来。
-* **权限设定**：如果你的脚本需要执行权限，可以在 YAML 里加一个 `chmod` 的 `shell` 命令，或者直接在 git 仓库里 `chmod +x`。
+- **路径问题**：在 YAML 里，左边是**目的地**（通常带 `~/`），右边是**源文件**（相对于 `install.conf.yaml` 的路径）。
+- **参数配置**：建议在 `defaults` 里开启 `relink: true`。这样如果你手动改了软链接，Dotbot 每次运行都会把它纠正回来。
+- **权限设定**：如果你的脚本需要执行权限，可以在 YAML 里加一个 `chmod` 的 `shell` 命令，或者直接在 git 仓库里 `chmod +x`。
 
 ---
 
@@ -86,7 +89,7 @@ bash ./install
 
 ---
 
-## 验证 
+## 验证
 
 - 查看当前 shell `echo $SHELL`
 - 查看别名 `alias rm`
