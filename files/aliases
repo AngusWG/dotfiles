@@ -1,10 +1,15 @@
+# source ~/.aliases
 alias rm='trash'
 alias dc='sudo docker compose'
+alias dl='sudo docker logs --tail 50'
+alias dlf='sudo docker logs -f --tail 50'
 alias wgdu='sudo docker-compose down --remove-orphans  && sudo docker-compose up -d'
 
-up_zip_all() {
+_do_up_zip_all() {
+    setopt local_options nullglob
     local files=(*.zip *.rar *.7z)
-    if [ ! -e "${files[0]}" ]; then
+
+    if [ ${#files[@]} -eq 0 ]; then
         echo "未发现压缩文件，跳过。"
         return
     fi
@@ -22,4 +27,4 @@ up_zip_all() {
     done
 }
 
-alias upzip_all='up_zip_all'
+alias upzip_all='_do_up_zip_all'
