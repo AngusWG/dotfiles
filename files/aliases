@@ -21,5 +21,5 @@ up_zip_all() {
         fi
     done
 }
-alias up_zip_all='up_zip_all'
+
 alias upzip_all='up_zip_all'
