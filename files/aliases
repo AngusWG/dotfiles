@@ -2,3 +2,24 @@ alias rm='trash'
 alias dc='sudo docker compose'
 alias wgdu='sudo docker-compose down --remove-orphans  && sudo docker-compose up -d'
 
+up_zip_all() {
+    local files=(*.zip *.rar *.7z)
+    if [ ! -e "${files[0]}" ]; then
+        echo "未发现压缩文件，跳过。"
+        return
+    fi
+
+    for arc in "${files[@]}"; do
+        if [ -f "$arc" ]; then
+            echo "正在处理: $arc"
+            if 7z x "$arc" -y; then
+                echo "解压成功，删除源文件..."
+                rm "$arc"
+            else
+                echo "警告: $arc 解压失败，保留原文件！"
+            fi
+        fi
+    done
+}
+alias up_zip_all='up_zip_all'
+alias upzip_all='up_zip_all'

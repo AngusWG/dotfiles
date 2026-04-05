@@ -10,11 +10,17 @@ install:
 format:
 	find . -type f -not -path '*/.*/*' -exec dos2unix {} +
 
-# 更新：同步远程代码和子模块
 update:
 	git fetch --all
 	git reset --hard origin/main
 	bash ./install
+
+update-d:
+	git fetch --all
+	git reset --hard origin/develop
+	bash ./install
+
+ud: update-d
 
 u: update
 
