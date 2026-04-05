@@ -8,7 +8,7 @@ echo "🚀 开始环境初始化..."
 if command -v apt >/dev/null; then
     echo "正在安装系统依赖..."
     sudo apt update
-    sudo apt install -y zsh tmux git curl fzf tree trash-cli
+    sudo apt install -y zsh tmux git curl fzf tree trash-cli dos2unix
 fi
 
 # --- 2. 安装 Oh My Zsh ---
