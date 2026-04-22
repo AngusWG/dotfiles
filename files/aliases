@@ -27,4 +27,4 @@ _do_up_zip_all() {
     done
 }
 
-alias upzip_all='_do_up_zip_all'
+alias unzip_all='_do_up_zip_all'
